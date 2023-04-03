@@ -1,0 +1,365 @@
+WindowManager:
+    FirstWindow:
+    SecondWindow:
+    ThirdWindow:
+    FourthWindow:
+
+<FirstWindow>:
+    name: 'first'
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        spacing: 23
+        padding: 100, 25, 100, 25
+        Label:
+            text: 'Здоровенькі були, панове \n\nЦе лабораторна робота №1 \n\nВиконав: Груша А.О. \n\nОберіть алгоритм:'
+            background_color: (102/255, 102/255, 1, 1)
+            color: (0,0,0,1)
+            font_size: 20
+            size_hint_y: None
+            height: 175
+            size_hint_x: None
+            width: 275
+
+        Button:
+            text: 'Лінійний'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 20
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "second"
+                root.manager.transition.direction = 'left'
+
+        Button:
+            text: 'Що розгалуджується'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 20
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "third"
+                root.manager.transition.direction = 'left'
+
+        Button:
+            text: 'Циклічний'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 20
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "fourth"
+                root.manager.transition.direction = 'left'
+
+<SecondWindow>:
+    name: 'second'
+
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        spacing: 13
+        padding: 100, 25, 100, 25
+        Label:
+            text: 'Ви обрали циклічний алгоритм'
+            background_color: (102/255, 102/255, 1, 1)
+
+            color: (0,0,0,1)
+            font_size: 18
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+        Image:
+            source: 'img.png'
+
+        TextInput:
+            id: a
+            multiline: False
+            hint_text: 'Введіть значення а:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+        TextInput:
+            id: x
+            multiline: False
+            hint_text: 'Введіть значення x:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+        TextInput:
+            id: c
+            multiline: False
+            hint_text: 'Введіть значення c:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+
+        Label:
+            id: result
+            text: 'Результат: '
+            background_color: (128/255, 128/255, 128/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color: (0,0,0,1)
+            font_size: 18
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+        Button:
+            text: 'Обчислити'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_press: root.linear_alg()
+
+        Button:
+            text: 'На головну'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = 'right'
+
+
+<ThirdWindow>:
+    name: 'third'
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        spacing: 13
+        padding: 100, 25, 100, 25
+        Label:
+            text: 'Ви обрали алгоритм, що розгалуджується'
+            background_color: (102/255, 102/255, 1, 1)
+            color: (0,0,0,1)
+            font_size: 18
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+        Image:
+            source: 'img_1.png'
+
+        TextInput:
+            id: k
+            multiline: False
+            hint_text: 'Введіть значення k:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+            required: True
+        TextInput:
+            id: aa
+            multiline: False
+            hint_text: 'Введіть значення a:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+            required: True
+        TextInput:
+            id: cc
+            multiline: False
+            hint_text: 'Введіть значення c:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+            required: True
+        TextInput:
+            id: p
+            multiline: False
+            hint_text: 'Введіть значення p:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+
+        Label:
+            id: result2
+            text: 'Результат: '
+            background_color: (128/255, 128/255, 128/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color: (0,0,0,1)
+            font_size: 14
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+        Button:
+            text: 'Обчислити'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_press: root.branch_alg()
+
+        Button:
+            text: 'На головну'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = 'right'
+
+<FourthWindow>:
+    name: 'fourth'
+    GridLayout:
+        cols:1
+        size: root.width, root.height
+        spacing: 13
+        padding: 100, 25, 100, 25
+        Label:
+            text: 'Ви обрали циклічний алгоритм'
+            background_color: (102/255, 102/255, 1, 1)
+            color: (0,0,0,1)
+            font_size: 18
+            size_hint_y: None
+            height: 50
+            size_hint_x: None
+            width: 275
+        Image:
+            source: 'img_2.png'
+
+        TextInput:
+            id: aaa
+            multiline: False
+            hint_text: 'Введіть значення a:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+        TextInput:
+            id: b
+            multiline: False
+            hint_text: 'Введіть значення b:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+        TextInput:
+            id: n
+            multiline: False
+            hint_text: 'Введіть значення n:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+        TextInput:
+            id: pp
+            multiline: False
+            hint_text: 'Введіть значення p:'
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            input_filter: 'float'
+
+        Label:
+            id: result3
+            text: 'Результат: '
+            background_color: (128/255, 128/255, 128/255, 1)
+            canvas.before:
+                Color:
+                    rgba: self.background_color
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            color: (0,0,0,1)
+            font_size: 14
+            size_hint_y: None
+            height: 30
+            size_hint_x: None
+            width: 275
+            text_size: self.size
+            halign: 'left'
+            valign: 'middle'
+        Button:
+            text: 'Обчислити'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_press: root.cycle_alg()
+
+        Button:
+            text: 'На головну'
+            background_color: (0, 1, 1, 1)
+            background_normal: ''
+            color: (64/255, 64/255, 64/255, 1)
+            font_size: 15
+            size_hint_y: None
+            height: 35
+            size_hint_x: None
+            width: 275
+            on_release:
+                app.root.current = "first"
+                root.manager.transition.direction = 'right'
